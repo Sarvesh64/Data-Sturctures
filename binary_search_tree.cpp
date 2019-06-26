@@ -54,12 +54,60 @@ void insertNode(){
 	}
 }
 
+void displayIn(Node* root){
+	if(root==NULL){
+		printf("Kuch nhi hai andar\n");
+		return;
+	}
+	if(root->left){
+		displayIn(root->left);
+	}
+	printf(" %d-> ",root->data);
+	if(root->right){
+		displayIn(root->right);
+	}
+	
+}
+
+void displayPost(Node* root){
+	if(root==NULL){
+		printf("Kuch nhi hai andar \n");
+		return;
+	}
+	
+	if(root->left){
+		displayPost(root->left);
+	}
+	if(root->right){
+		displayPost(root->right);
+	}
+	printf(" %d-> ",root->data);
+}
+
+void displayPre(Node* root){
+	if(root==NULL){
+		printf("Kuch nhi hai andar \n");
+		return;
+	}
+	printf(" %d-> ",root->data);
+	if(root->left){
+		displayPost(root->left);
+	}
+	if(root->right){
+		displayPost(root->right);
+	}
+	
+}
+
+
 int main(){
 	int choice;
 	while(1){
 	printf(" \n");
 	printf("1. Insert Node \n");
-	printf("5. Add at Display \n");
+	printf("2. Display in In-order \n");
+	printf("3. Display in Post-order \n");
+	printf("4. Display in Pre-order \n");
 	printf(" \n");
 	printf(" Enter Your Choice\n");
 	
@@ -69,7 +117,16 @@ int main(){
 		case 1:	insertNode();
 				//display();
 			break;
-		
+		case 2: printf("In-Order->");
+				displayIn(root);
+					printf("\n");
+				printf("Post-Order->");
+				displayPost(root);
+					printf("\n");
+				printf("Pre-Order->");
+				displayPre(root);
+					printf("\n");
+		break;
 	}
 }
 	return 0;
